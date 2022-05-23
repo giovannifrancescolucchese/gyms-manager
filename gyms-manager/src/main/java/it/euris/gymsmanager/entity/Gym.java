@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Data;
 
+/**
+ * L'entita vera e propria sulla quale verrano eseguite le operazioni CRUD.
+ * Viene utilizzato Lombok per evitare di scrivere costruttori e emetodi get e set
+ */
 @Entity
 @Data
 @Table(name = "gym")
