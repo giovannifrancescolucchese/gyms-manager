@@ -55,11 +55,11 @@ public class ManagerController {
     @DeleteMapping(value ="manager/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
         managerService.deleteById(id);
-        managerService.getById(id).get();
+
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="api/manager/")
+    @DeleteMapping(value ="manager/")
     public ResponseEntity deleteAllInBatch() {
         managerService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);

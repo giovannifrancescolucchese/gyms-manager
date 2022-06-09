@@ -22,7 +22,7 @@ public class GymController {
   @Autowired
   GymServiceImpl gymService;
 
-  @GetMapping(value = "gyms")
+  @GetMapping(value = "gym")
   public ResponseEntity<List<Gym>> getAllGyms() {
     return ResponseEntity.ok(gymService.getAll());
   }
@@ -55,11 +55,11 @@ public class GymController {
   @DeleteMapping(value ="gym/{id}")
   public ResponseEntity deleteById(@PathVariable("id") Long id) {
     gymService.deleteById(id);
-    gymService.getById(id).get();
+
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);
   }
 
-  @DeleteMapping(value ="api/gym/")
+  @DeleteMapping(value ="gym/")
   public ResponseEntity deleteAllInBatch() {
     gymService.deleteAllInBatch();
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);

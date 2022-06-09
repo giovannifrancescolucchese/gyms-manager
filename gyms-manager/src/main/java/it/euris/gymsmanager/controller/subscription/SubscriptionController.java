@@ -59,7 +59,7 @@ public class SubscriptionController {
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="api/subscription/")
+    @DeleteMapping(value ="subscription/")
     public ResponseEntity deleteAllInBatch() {
         subscriptionService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
