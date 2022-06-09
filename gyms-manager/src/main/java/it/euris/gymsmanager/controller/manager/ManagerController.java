@@ -59,7 +59,7 @@ public class ManagerController {
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="api/manager/")
+    @DeleteMapping(value ="manager/")
     public ResponseEntity deleteAllInBatch() {
         managerService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);

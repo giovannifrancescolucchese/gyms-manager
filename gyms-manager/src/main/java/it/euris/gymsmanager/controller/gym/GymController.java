@@ -59,7 +59,7 @@ public class GymController {
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);
   }
 
-  @DeleteMapping(value ="api/gym/")
+  @DeleteMapping(value ="gym/")
   public ResponseEntity deleteAllInBatch() {
     gymService.deleteAllInBatch();
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);

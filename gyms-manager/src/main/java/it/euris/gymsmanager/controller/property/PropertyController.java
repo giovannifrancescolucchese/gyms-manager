@@ -59,7 +59,7 @@ public class PropertyController {
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="api/property/")
+    @DeleteMapping(value ="property/")
     public ResponseEntity deleteAllInBatch() {
         propertyService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);

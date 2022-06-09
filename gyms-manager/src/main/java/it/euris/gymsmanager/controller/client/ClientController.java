@@ -59,7 +59,7 @@ public class ClientController {
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="api/client/")
+    @DeleteMapping(value ="client/")
     public ResponseEntity deleteAllInBatch() {
         clientService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
