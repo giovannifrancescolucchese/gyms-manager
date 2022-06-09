@@ -1,5 +1,6 @@
-package it.euris.gymsmanager.entity.property;
+package it.euris.gymsmanager.entity.subscription;
 
+import it.euris.gymsmanager.entity.client.Client;
 import it.euris.gymsmanager.entity.gym.Gym;
 import it.euris.gymsmanager.entity.manager.Manager;
 import lombok.Data;
@@ -7,8 +8,8 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "property")
-public class Property {
+@Table(name = "subscription")
+public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +17,10 @@ public class Property {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "manager_id")
-    Manager manager;
-
-    @ManyToOne
     @JoinColumn(name = "gym_id")
     Gym gym;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    Client client;
 }

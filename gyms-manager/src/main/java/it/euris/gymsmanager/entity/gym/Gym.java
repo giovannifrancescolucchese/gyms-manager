@@ -1,8 +1,8 @@
 package it.euris.gymsmanager.entity.gym;
 
 import javax.persistence.*;
-import it.euris.gymsmanager.entity.client.Client;
 import it.euris.gymsmanager.entity.property.Property;
+import it.euris.gymsmanager.entity.subscription.Subscription;
 import lombok.Data;
 import java.util.Set;
 
@@ -46,6 +46,9 @@ public class Gym {
 
   @OneToMany(mappedBy = "gym")
   Set<Property> property;
+
+  @OneToMany(mappedBy = "gym")
+  Set<Subscription> subscription;
 
   /**@OneToMany(mappedBy="gym")
   private Set<Client> client;*/

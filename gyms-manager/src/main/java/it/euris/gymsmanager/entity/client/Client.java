@@ -3,6 +3,7 @@ package it.euris.gymsmanager.entity.client;
 import javax.persistence.*;
 
 import it.euris.gymsmanager.entity.property.Property;
+import it.euris.gymsmanager.entity.subscription.Subscription;
 import lombok.Data;
 
 import java.util.Set;
@@ -33,7 +34,7 @@ public class Client {
     private String email;
 
     @OneToMany(mappedBy = "client")
-    Set<Property> property;
+    Set<Subscription> subscription;
 
     /**@ManyToOne@JoinColumn(name="gym_id", nullable=false)
     private Gym gym;*/

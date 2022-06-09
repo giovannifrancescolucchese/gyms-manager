@@ -16,4 +16,5 @@ public interface ManagerService {
     Manager updateById(Long id, Manager mng);
     void deleteById(Long id);
 
+    void deleteAllInBatch();
 }

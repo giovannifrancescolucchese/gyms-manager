@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Classe CONTROLLER dove verranno esposti tutti i metodi relativi all'entità GYM al Front End
- */
 @RequestMapping("/api/")
 @RestController
 public class GymController {
@@ -25,22 +22,11 @@ public class GymController {
   @Autowired
   GymServiceImpl gymService;
 
-  /**
-   * Metodo per il retrieve di tutte le palestre
-   *
-   * @return la lista delle palestre
-   */
   @GetMapping(value = "gyms")
   public ResponseEntity<List<Gym>> getAllGyms() {
     return ResponseEntity.ok(gymService.getAll());
   }
 
-  /**
-   * Metdo per il retrieve di una particolare palestra
-   *
-   * @param id identificativo della palestra
-   * @return l'entità Gym con quel particolare id
-   */
   @GetMapping(value = "gym/{id}")
   public ResponseEntity<Gym> findById(@PathVariable("id") Long id) {
     return ResponseEntity.ok(
@@ -50,12 +36,6 @@ public class GymController {
     );
   }
 
-  /**
-   * Metodo per la creazione della entità palestra
-   *
-   * @param gym l'oggetto palestra (conversione da json a oggetto Java automatico)
-   * @return lo stesso oggetto creato
-   */
   @PostMapping(value = "gym",
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
@@ -63,13 +43,6 @@ public class GymController {
     return ResponseEntity.ok(gymService.create(gym));
   }
 
-  /**
-   * Metodo per l'aggiornamento di un'entità palestra
-   *
-   * @param id l'identificativo della palestra da aggiornare
-   * @param gym il payload che verrà sovrascritto
-   * @return l'oggetto aggiornato
-   */
   @PostMapping(value = "gym/{id}",
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
@@ -79,24 +52,14 @@ public class GymController {
     return ResponseEntity.ok(gymService.updateById(id, gym));
   }
 
-  /**
-   * Metodo per la cancellazione dell'entità
-   *
-   * @param id l'identificativo dell'entità da cancellare
-   * @return http status ok senza contenuto
-   */
   @DeleteMapping(value ="gym/{id}")
   public ResponseEntity deleteById(@PathVariable("id") Long id) {
     gymService.deleteById(id);
     gymService.getById(id).get();
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);
   }
-  /**
-   * Metodo per la cancellazione di tutte le entità
-   *
-   * @return http status ok senza contenuto
-   */
-  @DeleteMapping()
+
+  @DeleteMapping(value ="api/gym/")
   public ResponseEntity deleteAllInBatch() {
     gymService.deleteAllInBatch();
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);

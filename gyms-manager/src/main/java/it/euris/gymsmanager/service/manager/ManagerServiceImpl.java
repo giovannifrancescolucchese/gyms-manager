@@ -4,7 +4,7 @@ package it.euris.gymsmanager.service.manager;
 import java.util.List;
 import java.util.Optional;
 import it.euris.gymsmanager.entity.manager.Manager;
-import it.euris.gymsmanager.service.repository.manager.ManagerRepository;
+import it.euris.gymsmanager.repository.manager.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class ManagerServiceImpl implements ManagerService {
 
     @Autowired
-    ManagerRepository mngRepository;
+    ManagerRepository managerRepository;
 
     /**
      * Ottiene la lista di tutti gi impianti sportivi
@@ -25,7 +25,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public List<Manager> getAll() {
-        return mngRepository.findAll();
+        return managerRepository.findAll();
     }
 
     /**
@@ -36,7 +36,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Optional<Manager> getById(Long id) {
-        return mngRepository.findById(id);
+        return managerRepository.findById(id);
     }
 
     /**
@@ -47,7 +47,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Manager create(Manager mng) {
-        return mngRepository.save(mng);
+        return managerRepository.save(mng);
     }
 
     /**
@@ -60,7 +60,7 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public Manager updateById(Long id, Manager mng) {
         mng.setId(id);
-        return mngRepository.save(mng);
+        return managerRepository.save(mng);
     }
 
     /**
@@ -70,7 +70,11 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public void deleteById(Long id) {
-        mngRepository.deleteById(id);
+        managerRepository.deleteById(id);
+    }
+
+    public void deleteAllInBatch(){
+        managerRepository.deleteAllInBatch();
     }
 
 }

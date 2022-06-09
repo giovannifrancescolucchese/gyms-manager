@@ -3,7 +3,7 @@ package it.euris.gymsmanager.service.property;
 import java.util.List;
 import java.util.Optional;
 import it.euris.gymsmanager.entity.property.Property;
-import it.euris.gymsmanager.service.repository.property.PropertyRepository;
+import it.euris.gymsmanager.repository.property.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +70,10 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public void deleteById(Long id) {
         propertyRepository.deleteById(id);
+    }
+
+    public void deleteAllInBatch(){
+        propertyRepository.deleteAllInBatch();
     }
 
 }

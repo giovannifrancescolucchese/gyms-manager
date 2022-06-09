@@ -1,4 +1,4 @@
-package it.euris.gymsmanager.service.repository.client;
+package it.euris.gymsmanager.repository.client;
 
 import it.euris.gymsmanager.entity.client.Client;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,7 +1,7 @@
 package it.euris.gymsmanager.service.gym;
 
 import it.euris.gymsmanager.entity.gym.Gym;
-import it.euris.gymsmanager.service.repository.gym.GymRepository;
+import it.euris.gymsmanager.repository.gym.GymRepository;
 import java.util.List;
 import java.util.Optional;
 
