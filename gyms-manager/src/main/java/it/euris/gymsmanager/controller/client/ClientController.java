@@ -22,7 +22,7 @@ public class ClientController {
     @Autowired
     ClientServiceImpl clientService;
 
-    @GetMapping(value = "clients")
+    @GetMapping(value = "client")
     public ResponseEntity<List<Client>> getAllGyms() {
         return ResponseEntity.ok(clientService.getAll());
     }
@@ -36,7 +36,7 @@ public class ClientController {
         );
     }
 
-    @PostMapping(value = "client",
+    @PostMapping(value = "clients",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Client> create(@RequestBody Client client) {
@@ -55,11 +55,11 @@ public class ClientController {
     @DeleteMapping(value ="client/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
         clientService.deleteById(id);
-        clientService.getById(id).get();
+
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="client/")
+    @DeleteMapping(value ="delclient")
     public ResponseEntity deleteAllInBatch() {
         clientService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);

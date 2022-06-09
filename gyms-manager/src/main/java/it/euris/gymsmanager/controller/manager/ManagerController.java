@@ -36,7 +36,7 @@ public class ManagerController {
         );
     }
 
-    @PostMapping(value = "manager",
+    @PostMapping(value = "managers",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Manager> create(@RequestBody Manager mng) {
@@ -55,11 +55,11 @@ public class ManagerController {
     @DeleteMapping(value ="manager/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
         managerService.deleteById(id);
-        managerService.getById(id).get();
+
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="manager/")
+    @DeleteMapping(value ="delmanager")
     public ResponseEntity deleteAllInBatch() {
         managerService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
