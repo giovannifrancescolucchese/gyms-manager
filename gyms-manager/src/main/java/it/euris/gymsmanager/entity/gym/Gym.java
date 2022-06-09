@@ -1,12 +1,10 @@
-package it.euris.gymsmanager.entity;
+package it.euris.gymsmanager.entity.gym;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import it.euris.gymsmanager.entity.client.Client;
+import it.euris.gymsmanager.entity.property.Property;
 import lombok.Data;
+import java.util.Set;
 
 /**
  * L'entita vera e propria sulla quale verrano eseguite le operazioni CRUD.
@@ -19,7 +17,7 @@ public class Gym {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", updatable = false, nullable = false)
+  @Column(name = "gym_id", updatable = false, nullable = false)
   private Long id;
 
   @Column(name="name")
@@ -42,5 +40,17 @@ public class Gym {
 
   @Column(name="phone")
   private String phone;
+
+  @Column(name="review")
+  private String review;
+
+  @OneToMany(mappedBy = "gym")
+  Set<Property> property;
+
+  /**@OneToMany(mappedBy="gym")
+  private Set<Client> client;*/
+
+  /**@OneToOne(mappedBy = "gym", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+  private Manager mng;*/
 
 }

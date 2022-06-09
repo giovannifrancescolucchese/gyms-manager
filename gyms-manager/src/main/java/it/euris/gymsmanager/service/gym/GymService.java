@@ -1,6 +1,6 @@
-package it.euris.gymsmanager.service;
+package it.euris.gymsmanager.service.gym;
 
-import it.euris.gymsmanager.entity.Gym;
+import it.euris.gymsmanager.entity.gym.Gym;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,4 +13,7 @@ public interface GymService {
   Gym create(Gym gym);
   Gym updateById(Long id, Gym gym);
   void deleteById(Long id);
+  void deleteAllInBatch();
+
+
 }

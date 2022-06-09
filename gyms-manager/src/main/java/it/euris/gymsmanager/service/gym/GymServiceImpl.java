@@ -1,9 +1,10 @@
-package it.euris.gymsmanager.service;
+package it.euris.gymsmanager.service.gym;
 
-import it.euris.gymsmanager.entity.Gym;
-import it.euris.gymsmanager.repository.GymRepository;
+import it.euris.gymsmanager.entity.gym.Gym;
+import it.euris.gymsmanager.service.repository.gym.GymRepository;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,13 +53,13 @@ public class GymServiceImpl implements GymService {
   /**
    * Aggiorna la palestra con quel particolare identificativo
    *
-   * @param id l'identificativo della palestra da aggiornare
+   * @param gym_id l'identificativo della palestra da aggiornare
    * @param gym il payload che andrà a sovrascrivere i dati di quella particolare entità
    * @return la palestra aggiornata
    */
   @Override
-  public Gym updateById(Long id, Gym gym) {
-    gym.setId(id);
+  public Gym updateById(Long gym_id, Gym gym) {
+    gym.setId(gym_id);
     return gymRepository.save(gym);
   }
 
@@ -71,4 +72,9 @@ public class GymServiceImpl implements GymService {
   public void deleteById(Long id) {
     gymRepository.deleteById(id);
   }
+
+  public void deleteAllInBatch(){
+    gymRepository.deleteAllInBatch();
+  }
+
 }

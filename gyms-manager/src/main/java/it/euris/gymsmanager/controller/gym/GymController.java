@@ -1,7 +1,7 @@
-package it.euris.gymsmanager.controller;
+package it.euris.gymsmanager.controller.gym;
 
-import it.euris.gymsmanager.entity.Gym;
-import it.euris.gymsmanager.service.GymServiceImpl;
+import it.euris.gymsmanager.entity.gym.Gym;
+import it.euris.gymsmanager.service.gym.GymServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,8 +44,8 @@ public class GymController {
   @GetMapping(value = "gym/{id}")
   public ResponseEntity<Gym> findById(@PathVariable("id") Long id) {
     return ResponseEntity.ok(
-        gymService.getById(id).isPresent()?
-          gymService.getById(id).get():
+            gymService.getById(id).isPresent()?
+                    gymService.getById(id).get():
         null
     );
   }
@@ -88,9 +88,18 @@ public class GymController {
   @DeleteMapping(value ="gym/{id}")
   public ResponseEntity deleteById(@PathVariable("id") Long id) {
     gymService.deleteById(id);
+    gymService.getById(id).get();
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);
   }
-
-
+  /**
+   * Metodo per la cancellazione di tutte le entità
+   *
+   * @return http status ok senza contenuto
+   */
+  @DeleteMapping()
+  public ResponseEntity deleteAllInBatch() {
+    gymService.deleteAllInBatch();
+    return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+  }
 
 }
