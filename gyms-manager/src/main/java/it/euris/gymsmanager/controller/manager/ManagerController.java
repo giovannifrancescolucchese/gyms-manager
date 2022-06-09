@@ -22,12 +22,12 @@ public class ManagerController {
     @Autowired
     ManagerServiceImpl managerService;
 
-    @GetMapping(value = "manager")
+    @GetMapping(value = "getAllManagers")
     public ResponseEntity<List<Manager>> getAllManager() {
         return ResponseEntity.ok(managerService.getAll());
     }
 
-    @GetMapping(value = "manager/{id}")
+    @GetMapping(value = "getManagerById/{id}")
     public ResponseEntity<Manager> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
                 managerService.getById(id).isPresent()?
@@ -43,7 +43,7 @@ public class ManagerController {
         return ResponseEntity.ok(managerService.create(mng));
     }
 
-    @PostMapping(value = "manager/{id}",
+    @PostMapping(value = "updateManagerById/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Manager> updateById(
@@ -52,14 +52,14 @@ public class ManagerController {
         return ResponseEntity.ok(managerService.updateById(id, mng));
     }
 
-    @DeleteMapping(value ="manager/{id}")
+    @DeleteMapping(value ="deleteManagerById/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
         managerService.deleteById(id);
 
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="manager/")
+    @DeleteMapping(value ="deleteAllManagers/")
     public ResponseEntity deleteAllInBatch() {
         managerService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);

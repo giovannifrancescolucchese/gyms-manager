@@ -23,12 +23,12 @@ public class ClientController {
     @Autowired
     ClientServiceImpl clientService;
 
-    @GetMapping(value = "client")
+    @GetMapping(value = "getAllClients")
     public ResponseEntity<List<Client>> getAllGyms() {
         return ResponseEntity.ok(clientService.getAll());
     }
 
-    @GetMapping(value = "client/{id}")
+    @GetMapping(value = "getClientById/{id}")
     public ResponseEntity<Client> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
                 clientService.getById(id).isPresent()?
@@ -44,7 +44,7 @@ public class ClientController {
         return ResponseEntity.ok(clientService.create(client));
     }
 
-    @PostMapping(value = "client/{id}",
+    @PostMapping(value = "updateClientById/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Client> updateById(
@@ -53,13 +53,13 @@ public class ClientController {
         return ResponseEntity.ok(clientService.updateById(id, client));
     }
 
-    @DeleteMapping(value ="client/{id}")
+    @DeleteMapping(value ="deleteClientById/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
         clientService.deleteById(id);
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="client/")
+    @DeleteMapping(value ="deleteAllClients/")
     public ResponseEntity deleteAllInBatch() {
         clientService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);

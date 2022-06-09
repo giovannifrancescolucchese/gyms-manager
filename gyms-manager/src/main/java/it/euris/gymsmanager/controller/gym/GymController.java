@@ -22,12 +22,12 @@ public class GymController {
   @Autowired
   GymServiceImpl gymService;
 
-  @GetMapping(value = "gym")
+  @GetMapping(value = "getAllGyms")
   public ResponseEntity<List<Gym>> getAllGyms() {
     return ResponseEntity.ok(gymService.getAll());
   }
 
-  @GetMapping(value = "gym/{id}")
+  @GetMapping(value = "getGymById/{id}")
   public ResponseEntity<Gym> findById(@PathVariable("id") Long id) {
     return ResponseEntity.ok(
             gymService.getById(id).isPresent()?
@@ -43,7 +43,7 @@ public class GymController {
     return ResponseEntity.ok(gymService.create(gym));
   }
 
-  @PostMapping(value = "gym/{id}",
+  @PostMapping(value = "updateGymById/{id}",
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Gym> updateById(
@@ -52,14 +52,14 @@ public class GymController {
     return ResponseEntity.ok(gymService.updateById(id, gym));
   }
 
-  @DeleteMapping(value ="gym/{id}")
+  @DeleteMapping(value ="deleteGymById/{id}")
   public ResponseEntity deleteById(@PathVariable("id") Long id) {
     gymService.deleteById(id);
 
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);
   }
 
-  @DeleteMapping(value ="gym/")
+  @DeleteMapping(value ="deleteAllGyms/")
   public ResponseEntity deleteAllInBatch() {
     gymService.deleteAllInBatch();
     return ResponseEntity.ok(HttpStatus.NO_CONTENT);
