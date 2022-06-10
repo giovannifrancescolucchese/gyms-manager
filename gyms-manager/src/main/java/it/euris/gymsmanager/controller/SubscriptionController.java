@@ -1,7 +1,7 @@
-package it.euris.gymsmanager.controller.subscription;
+package it.euris.gymsmanager.controller;
 
 import java.util.List;
-import it.euris.gymsmanager.entity.subscription.Subscription;
+import it.euris.gymsmanager.entity.Subscription;
 import it.euris.gymsmanager.service.subscription.SubscriptionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

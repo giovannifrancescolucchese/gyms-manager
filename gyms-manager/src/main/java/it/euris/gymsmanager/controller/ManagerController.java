@@ -1,8 +1,8 @@
-package it.euris.gymsmanager.controller.client;
+package it.euris.gymsmanager.controller;
 
-import it.euris.gymsmanager.entity.client.Client;
-import it.euris.gymsmanager.service.client.ClientServiceImpl;
 import java.util.List;
+import it.euris.gymsmanager.entity.Manager;
+import it.euris.gymsmanager.service.manager.ManagerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,51 +17,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api/")
 @RestController
-public class ClientController {
-
+public class ManagerController {
 
     @Autowired
-    ClientServiceImpl clientService;
+    ManagerServiceImpl managerService;
 
-    @GetMapping(value = "getAllClients")
-    public ResponseEntity<List<Client>> getAllGyms() {
-        return ResponseEntity.ok(clientService.getAll());
+    @GetMapping(value = "getAllManagers")
+    public ResponseEntity<List<Manager>> getAllManager() {
+        return ResponseEntity.ok(managerService.getAll());
     }
 
-    @GetMapping(value = "getClientById/{id}")
-    public ResponseEntity<Client> findById(@PathVariable("id") Long id) {
+    @GetMapping(value = "getManagerById/{id}")
+    public ResponseEntity<Manager> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
-                clientService.getById(id).isPresent()?
-                        clientService.getById(id).get():
+                managerService.getById(id).isPresent()?
+                        managerService.getById(id).get():
                         null
         );
     }
 
-    @PostMapping(value = "client",
+    @PostMapping(value = "manager",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Client> create(@RequestBody Client client) {
-        return ResponseEntity.ok(clientService.create(client));
+    public ResponseEntity<Manager> create(@RequestBody Manager mng) {
+        return ResponseEntity.ok(managerService.create(mng));
     }
 
-    @PostMapping(value = "updateClientById/{id}",
+    @PostMapping(value = "updateManagerById/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Client> updateById(
+    public ResponseEntity<Manager> updateById(
             @PathVariable("id") Long id,
-            @RequestBody Client client) {
-        return ResponseEntity.ok(clientService.updateById(id, client));
+            @RequestBody Manager mng) {
+        return ResponseEntity.ok(managerService.updateById(id, mng));
     }
 
-    @DeleteMapping(value ="deleteClientById/{id}")
+    @DeleteMapping(value ="deleteManagerById/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
-        clientService.deleteById(id);
+        managerService.deleteById(id);
+
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="deleteAllClients/")
+    @DeleteMapping(value ="deleteAllManagers/")
     public ResponseEntity deleteAllInBatch() {
-        clientService.deleteAllInBatch();
+        managerService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
+
 }

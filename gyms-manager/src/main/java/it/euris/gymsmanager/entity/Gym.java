@@ -1,13 +1,8 @@
-package it.euris.gymsmanager.entity.gym;
+package it.euris.gymsmanager.entity;
 
 import javax.persistence.*;
-import it.euris.gymsmanager.entity.property.Property;
-import it.euris.gymsmanager.entity.subscription.Subscription;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * L'entita vera e propria sulla quale verrano eseguite le operazioni CRUD.
@@ -20,10 +15,8 @@ public class Gym {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @GenericGenerator( name = "uuid2", strategy = "uuid2" )
-  @Column(name = "gym_id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+  @Column(name = "id", updatable = false, nullable = false)
   private Long id;
-
 
   @Column(name="name")
   private String name;

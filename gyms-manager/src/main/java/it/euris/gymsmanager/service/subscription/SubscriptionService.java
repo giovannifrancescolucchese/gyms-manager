@@ -1,6 +1,6 @@
 package it.euris.gymsmanager.service.subscription;
 
-import it.euris.gymsmanager.entity.subscription.Subscription;
+import it.euris.gymsmanager.entity.Subscription;
 
 import java.util.List;
 import java.util.Optional;

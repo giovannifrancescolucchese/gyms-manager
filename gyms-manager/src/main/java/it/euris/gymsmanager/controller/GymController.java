@@ -1,6 +1,6 @@
-package it.euris.gymsmanager.controller.gym;
+package it.euris.gymsmanager.controller;
 
-import it.euris.gymsmanager.entity.gym.Gym;
+import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.service.gym.GymServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,23 +32,23 @@ public class GymController {
     return ResponseEntity.ok(
             gymService.getById(id).isPresent()?
                     gymService.getById(id).get():
-        null
+                    null
     );
   }
 
-  @PostMapping(value = "gym",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(value = "createGym",
+          consumes = MediaType.APPLICATION_JSON_VALUE,
+          produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Gym> create(@RequestBody Gym gym) {
     return ResponseEntity.ok(gymService.create(gym));
   }
 
   @PostMapping(value = "updateGymById/{id}",
-      consumes = MediaType.APPLICATION_JSON_VALUE,
-      produces = MediaType.APPLICATION_JSON_VALUE)
+          consumes = MediaType.APPLICATION_JSON_VALUE,
+          produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Gym> updateById(
-      @PathVariable("id") Long id,
-      @RequestBody Gym gym) {
+          @PathVariable("id") Long id,
+          @RequestBody Gym gym) {
     return ResponseEntity.ok(gymService.updateById(id, gym));
   }
 

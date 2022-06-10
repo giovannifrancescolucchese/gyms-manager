@@ -2,8 +2,8 @@ package it.euris.gymsmanager.service.property;
 
 import java.util.List;
 import java.util.Optional;
-import it.euris.gymsmanager.entity.property.Property;
-import it.euris.gymsmanager.repository.property.PropertyRepository;
+import it.euris.gymsmanager.entity.Property;
+import it.euris.gymsmanager.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

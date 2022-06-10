@@ -1,6 +1,6 @@
 package it.euris.gymsmanager.service.property;
 
-import it.euris.gymsmanager.entity.property.Property;
+import it.euris.gymsmanager.entity.Property;
 import java.util.List;
 import java.util.Optional;
 

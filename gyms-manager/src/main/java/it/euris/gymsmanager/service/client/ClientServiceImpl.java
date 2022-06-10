@@ -1,7 +1,7 @@
 package it.euris.gymsmanager.service.client;
 
-import it.euris.gymsmanager.entity.client.Client;
-import it.euris.gymsmanager.repository.client.ClientRepository;
+import it.euris.gymsmanager.entity.Client;
+import it.euris.gymsmanager.repository.ClientRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

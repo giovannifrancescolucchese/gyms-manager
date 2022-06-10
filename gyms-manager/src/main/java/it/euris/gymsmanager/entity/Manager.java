@@ -1,17 +1,14 @@
-package it.euris.gymsmanager.entity.client;
+package it.euris.gymsmanager.entity;
 
 import javax.persistence.*;
 
-import it.euris.gymsmanager.entity.property.Property;
-import it.euris.gymsmanager.entity.subscription.Subscription;
 import lombok.Data;
-
 import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "client")
-public class Client {
+@Table(name = "manager")
+public class Manager {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,15 +30,11 @@ public class Client {
     @Column(name="email")
     private String email;
 
-    @OneToMany(mappedBy = "client")
-    Set<Subscription> subscription;
-
-    /**@ManyToOne@JoinColumn(name="gym_id", nullable=false)
-    private Gym gym;*/
+    @OneToMany(mappedBy = "manager")
+    Set<Property> property;
 
     /**@OneToOne(fetch = FetchType.LAZY)
-     @JoinColumn(name = "gym_id")
-     private Gym gym;*/
+    @JoinColumn(name = "gym_id")
+    private Gym gym;*/
 
 }
-

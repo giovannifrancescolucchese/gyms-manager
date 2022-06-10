@@ -1,8 +1,8 @@
 package it.euris.gymsmanager.service.subscription;
 
 
-import it.euris.gymsmanager.entity.subscription.Subscription;
-import it.euris.gymsmanager.repository.subscription.SubscriptionRepository;
+import it.euris.gymsmanager.entity.Subscription;
+import it.euris.gymsmanager.repository.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package it.euris.gymsmanager.entity.property;
+package it.euris.gymsmanager.entity;
 
-import it.euris.gymsmanager.entity.gym.Gym;
-import it.euris.gymsmanager.entity.manager.Manager;
+import it.euris.gymsmanager.entity.Gym;
+import it.euris.gymsmanager.entity.Manager;
 import lombok.Data;
 import javax.persistence.*;
 

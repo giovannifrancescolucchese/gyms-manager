@@ -1,7 +1,7 @@
-package it.euris.gymsmanager.controller.property;
+package it.euris.gymsmanager.controller;
 
 import java.util.List;
-import it.euris.gymsmanager.entity.property.Property;
+import it.euris.gymsmanager.entity.Property;
 import it.euris.gymsmanager.service.property.PropertyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

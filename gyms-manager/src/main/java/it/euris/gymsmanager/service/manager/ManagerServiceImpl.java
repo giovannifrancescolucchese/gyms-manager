@@ -3,8 +3,8 @@ package it.euris.gymsmanager.service.manager;
 
 import java.util.List;
 import java.util.Optional;
-import it.euris.gymsmanager.entity.manager.Manager;
-import it.euris.gymsmanager.repository.manager.ManagerRepository;
+import it.euris.gymsmanager.entity.Manager;
+import it.euris.gymsmanager.repository.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

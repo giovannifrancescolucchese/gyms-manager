@@ -1,8 +1,8 @@
-package it.euris.gymsmanager.controller.manager;
+package it.euris.gymsmanager.controller.country;
 
 import java.util.List;
-import it.euris.gymsmanager.entity.manager.Manager;
-import it.euris.gymsmanager.service.manager.ManagerServiceImpl;
+import it.euris.gymsmanager.entity.country.Province;
+import it.euris.gymsmanager.service.country.province.ProvinceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,52 +17,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api/")
 @RestController
-public class ManagerController {
+public class ProvinceController {
 
     @Autowired
-    ManagerServiceImpl managerService;
+    ProvinceServiceImpl provinceService;
 
-    @GetMapping(value = "getAllManagers")
-    public ResponseEntity<List<Manager>> getAllManager() {
-        return ResponseEntity.ok(managerService.getAll());
+    @GetMapping(value = "getAllProvinces")
+    public ResponseEntity<List<Province>> getAllManager() {
+        return ResponseEntity.ok(provinceService.getAll());
     }
 
-    @GetMapping(value = "getManagerById/{id}")
-    public ResponseEntity<Manager> findById(@PathVariable("id") Long id) {
+    @GetMapping(value = "getProvinceById/{id}")
+    public ResponseEntity<Province> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
-                managerService.getById(id).isPresent()?
-                        managerService.getById(id).get():
+                provinceService.getById(id).isPresent()?
+                        provinceService.getById(id).get():
                         null
         );
     }
 
-    @PostMapping(value = "manager",
+    @PostMapping(value = "createProvince",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Manager> create(@RequestBody Manager mng) {
-        return ResponseEntity.ok(managerService.create(mng));
+    public ResponseEntity<Province> create(@RequestBody Province province) {
+        return ResponseEntity.ok(provinceService.create(province));
     }
 
-    @PostMapping(value = "updateManagerById/{id}",
+    @PostMapping(value = "updateProvinceById/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Manager> updateById(
+    public ResponseEntity<Province> updateById(
             @PathVariable("id") Long id,
-            @RequestBody Manager mng) {
-        return ResponseEntity.ok(managerService.updateById(id, mng));
+            @RequestBody Province province) {
+        return ResponseEntity.ok(provinceService.updateById(id, province));
     }
 
-    @DeleteMapping(value ="deleteManagerById/{id}")
+    @DeleteMapping(value ="deleteProvinceById/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
-        managerService.deleteById(id);
-
+        provinceService.deleteById(id);
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="deleteAllManagers/")
+    @DeleteMapping(value ="deleteAllProvinces/")
     public ResponseEntity deleteAllInBatch() {
-        managerService.deleteAllInBatch();
+        provinceService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
 }
+
