@@ -29,6 +29,7 @@ public class RegionController {
         return ResponseEntity.ok(regionService.create(region));
     }
 
+
     @PostMapping(value = "updateRegionById/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
