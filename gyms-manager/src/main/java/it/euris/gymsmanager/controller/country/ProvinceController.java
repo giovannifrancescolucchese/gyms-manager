@@ -22,20 +22,6 @@ public class ProvinceController {
     @Autowired
     ProvinceServiceImpl provinceService;
 
-    @GetMapping(value = "getAllProvinces")
-    public ResponseEntity<List<Province>> getAllManager() {
-        return ResponseEntity.ok(provinceService.getAll());
-    }
-
-    @GetMapping(value = "getProvinceById/{id}")
-    public ResponseEntity<Province> findById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(
-                provinceService.getById(id).isPresent()?
-                        provinceService.getById(id).get():
-                        null
-        );
-    }
-
     @PostMapping(value = "createProvince",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,6 +36,20 @@ public class ProvinceController {
             @PathVariable("id") Long id,
             @RequestBody Province province) {
         return ResponseEntity.ok(provinceService.updateById(id, province));
+    }
+
+    @GetMapping(value = "getProvinceById/{id}")
+    public ResponseEntity<Province> findById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                provinceService.getById(id).isPresent()?
+                        provinceService.getById(id).get():
+                        null
+        );
+    }
+
+    @GetMapping(value = "getAllProvinces")
+    public ResponseEntity<List<Province>> getAllManager() {
+        return ResponseEntity.ok(provinceService.getAll());
     }
 
     @DeleteMapping(value ="deleteProvinceById/{id}")

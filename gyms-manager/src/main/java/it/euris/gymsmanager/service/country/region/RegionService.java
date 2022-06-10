@@ -12,4 +12,5 @@ public interface RegionService {
     Region updateById(Long id, Region region);
     void deleteById(Long id);
     void deleteAllInBatch();
+
 }

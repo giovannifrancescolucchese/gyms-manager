@@ -4,10 +4,6 @@ import javax.persistence.*;
 import lombok.Data;
 import java.util.Set;
 
-/**
- * L'entita vera e propria sulla quale verrano eseguite le operazioni CRUD.
- * Viene utilizzato Lombok per evitare di scrivere costruttori e emetodi get e set
- */
 @Entity
 @Data
 @Table(name = "gym")
@@ -47,11 +43,5 @@ public class Gym {
 
   @OneToMany(mappedBy = "gym")
   Set<Subscription> subscription;
-
-  /**@OneToMany(mappedBy="gym")
-  private Set<Client> client;*/
-
-  /**@OneToOne(mappedBy = "gym", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-  private Manager mng;*/
 
 }

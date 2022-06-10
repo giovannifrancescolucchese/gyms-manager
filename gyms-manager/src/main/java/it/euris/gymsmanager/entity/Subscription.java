@@ -1,7 +1,5 @@
 package it.euris.gymsmanager.entity;
 
-import it.euris.gymsmanager.entity.Client;
-import it.euris.gymsmanager.entity.Gym;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -20,6 +18,7 @@ public class Subscription {
     Gym gym;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    Client client;
+    @JoinColumn(name = "customer_id")
+    Customer customer;
+
 }

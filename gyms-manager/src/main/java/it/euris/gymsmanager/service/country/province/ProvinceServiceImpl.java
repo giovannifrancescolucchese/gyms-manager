@@ -14,17 +14,6 @@ public class ProvinceServiceImpl implements ProvinceService {
     ProvinceRepository provinceRepository;
 
     @Override
-    public List<Province> getAll() {
-        return provinceRepository.findAll();
-    }
-
-
-    @Override
-    public Optional<Province> getById(Long id) {
-        return provinceRepository.findById(id);
-    }
-
-    @Override
     public Province create(Province province) {
         return provinceRepository.save(province);
     }
@@ -33,6 +22,16 @@ public class ProvinceServiceImpl implements ProvinceService {
     public Province updateById(Long id, Province province) {
         province.setId(id);
         return provinceRepository.save(province);
+    }
+
+    @Override
+    public Optional<Province> getById(Long id) {
+        return provinceRepository.findById(id);
+    }
+
+    @Override
+    public List<Province> getAll() {
+        return provinceRepository.findAll();
     }
 
     @Override

@@ -1,7 +1,5 @@
 package it.euris.gymsmanager.entity;
 
-import it.euris.gymsmanager.entity.Gym;
-import it.euris.gymsmanager.entity.Manager;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -16,8 +14,8 @@ public class Property {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "manager_id")
-    Manager manager;
+    @JoinColumn(name = "owner_id")
+    Owner owner;
 
     @ManyToOne
     @JoinColumn(name = "gym_id")

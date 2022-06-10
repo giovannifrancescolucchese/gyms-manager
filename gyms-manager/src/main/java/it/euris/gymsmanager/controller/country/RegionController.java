@@ -29,7 +29,6 @@ public class RegionController {
         return ResponseEntity.ok(regionService.create(region));
     }
 
-
     @PostMapping(value = "updateRegionById/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,8 +51,6 @@ public class RegionController {
     public ResponseEntity<List<Region>> getAllManager() {
         return ResponseEntity.ok(regionService.getAll());
     }
-
-
 
     @DeleteMapping(value ="deleteRegionById/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {

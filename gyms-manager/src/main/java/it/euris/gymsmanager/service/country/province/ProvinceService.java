@@ -12,4 +12,5 @@ public interface ProvinceService {
     Province updateById(Long id, Province province);
     void deleteById(Long id);
     void deleteAllInBatch();
+
 }

@@ -14,17 +14,6 @@ public class RegionServiceImpl implements RegionService {
     RegionRepository regionRepository;
 
     @Override
-    public List<Region> getAll() {
-        return regionRepository.findAll();
-    }
-
-
-    @Override
-    public Optional<Region> getById(Long id) {
-        return regionRepository.findById(id);
-    }
-
-    @Override
     public Region create(Region region) {
         return regionRepository.save(region);
     }
@@ -33,6 +22,16 @@ public class RegionServiceImpl implements RegionService {
     public Region updateById(Long id, Region region) {
         region.setId(id);
         return regionRepository.save(region);
+    }
+
+    @Override
+    public Optional<Region> getById(Long id) {
+        return regionRepository.findById(id);
+    }
+
+    @Override
+    public List<Region> getAll() {
+        return regionRepository.findAll();
     }
 
     @Override

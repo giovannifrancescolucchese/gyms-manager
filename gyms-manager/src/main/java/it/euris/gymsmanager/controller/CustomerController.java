@@ -1,8 +1,8 @@
 package it.euris.gymsmanager.controller;
 
+import it.euris.gymsmanager.entity.Customer;
+import it.euris.gymsmanager.service.client.CustomerServiceImpl;
 import java.util.List;
-import it.euris.gymsmanager.entity.Subscription;
-import it.euris.gymsmanager.service.subscription.SubscriptionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,50 +17,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api/")
 @RestController
-public class SubscriptionController {
+public class CustomerController {
 
     @Autowired
-    SubscriptionServiceImpl subscriptionService;
+    CustomerServiceImpl customerService;
 
-    @PostMapping(value = "createSubscription",
+    @PostMapping(value = "createCustomer",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Subscription> create(@RequestBody Subscription subscription) {
-        return ResponseEntity.ok(subscriptionService.create(subscription));
+    public ResponseEntity<Customer> create(@RequestBody Customer customer) {
+        return ResponseEntity.ok(customerService.create(customer));
     }
 
-    @PostMapping(value = "updateSubscriptionById/{id}",
+    @PostMapping(value = "updateCustomerById/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Subscription> updateById(
+    public ResponseEntity<Customer> updateById(
             @PathVariable("id") Long id,
-            @RequestBody Subscription subscription) {
-        return ResponseEntity.ok(subscriptionService.updateById(id, subscription));
+            @RequestBody Customer customer) {
+        return ResponseEntity.ok(customerService.updateById(id, customer));
     }
 
-    @GetMapping(value = "getSubscriptionById/{id}")
-    public ResponseEntity<Subscription> findById(@PathVariable("id") Long id) {
+    @GetMapping(value = "getCustomerById/{id}")
+    public ResponseEntity<Customer> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(
-                subscriptionService.getById(id).isPresent() ?
-                        subscriptionService.getById(id).get() :
+                customerService.getById(id).isPresent()?
+                        customerService.getById(id).get():
                         null
         );
     }
 
-    @GetMapping(value = "getAllSubscriptions")
-    public ResponseEntity<List<Subscription>> getAllManager() {
-        return ResponseEntity.ok(subscriptionService.getAll());
+    @GetMapping(value = "getAllCustomers")
+    public ResponseEntity<List<Customer>> getAllGyms() {
+        return ResponseEntity.ok(customerService.getAll());
     }
 
-    @DeleteMapping(value = "deleteSubscriptionById/{id}")
+    @DeleteMapping(value ="deleteCustomerById/{id}")
     public ResponseEntity deleteById(@PathVariable("id") Long id) {
-        subscriptionService.deleteById(id);
+        customerService.deleteById(id);
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(value ="deleteAllSubscription/")
+    @DeleteMapping(value ="deleteAllCustomers/")
     public ResponseEntity deleteAllInBatch() {
-        subscriptionService.deleteAllInBatch();
+        customerService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
+
 }

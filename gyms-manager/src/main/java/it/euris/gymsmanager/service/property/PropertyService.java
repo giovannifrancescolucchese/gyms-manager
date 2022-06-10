@@ -4,9 +4,6 @@ import it.euris.gymsmanager.entity.Property;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Interfaccia dove vengono definite le firme dei metodi del Service
- */
 public interface PropertyService {
 
     List<Property> getAll();

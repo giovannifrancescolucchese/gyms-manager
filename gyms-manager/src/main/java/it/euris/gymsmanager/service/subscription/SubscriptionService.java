@@ -1,7 +1,6 @@
 package it.euris.gymsmanager.service.subscription;
 
 import it.euris.gymsmanager.entity.Subscription;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,4 +12,5 @@ public interface SubscriptionService {
         Subscription updateById(Long id, Subscription subscription);
         void deleteById(Long id);
         void deleteAllInBatch();
+
 }
