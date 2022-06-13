@@ -38,6 +38,12 @@ public class Gym {
   @Column(name="review")
   private String review;
 
+  @Column(name="region")
+  private String region;
+
+  @Column(name="province")
+  private String province;
+
   @OneToMany(mappedBy = "gym")
   Set<Property> property;
 

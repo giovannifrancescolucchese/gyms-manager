@@ -29,17 +29,27 @@ public class GymController {
       return ResponseEntity.ok(gymService.create(gym));
     }
 
+    @PostMapping(value = "updateGymById/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Gym> updateById(
+            @PathVariable("id") Long id,
+            @RequestBody Gym gym) {
+        return ResponseEntity.ok(gymService.updateById(id, gym));
+    }
+
     @GetMapping(value = "getGymById/{id}")
     public ResponseEntity<Gym> findById(@PathVariable("id") Long id) {
       return ResponseEntity.ok(
               gymService.getById(id).isPresent()?
-                      gymService.getById(id).get():
-                      null
+              gymService.getById(id).get():
+              null
       );
     }
 
     @GetMapping(value = "getAllGyms")
     public ResponseEntity<List<Gym>> getAllGyms() {
+
       return ResponseEntity.ok(gymService.getAll());
     }
 

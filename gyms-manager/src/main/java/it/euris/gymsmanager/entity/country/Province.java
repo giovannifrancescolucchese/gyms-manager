@@ -13,8 +13,11 @@ public class Province {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name="value")
+    private String value;
+
+    @Column(name="description")
+    private String description;
 
     @ManyToOne
     @JoinColumn(name="region_id", nullable=false)

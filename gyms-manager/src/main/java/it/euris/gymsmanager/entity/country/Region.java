@@ -14,8 +14,11 @@ public class Region {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name="value")
+    private String value;
+
+    @Column(name="description")
+    private String description;
 
     @OneToMany(mappedBy="region")
     private Set<Province> province;
