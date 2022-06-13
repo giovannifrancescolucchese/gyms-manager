@@ -1,6 +1,8 @@
 package it.euris.gymsmanager.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import java.util.Set;
 
@@ -29,7 +31,11 @@ public class Owner {
     @Column(name="email")
     private String email;
 
-    @OneToMany(mappedBy = "owner")
-    Set<Property> property;
+    @OneToOne(mappedBy = "owner")
+    @JsonIgnore
+    private Gym gym;
+
+    /**@OneToMany(mappedBy = "owner")
+    Set<Property> property;*/
 
 }

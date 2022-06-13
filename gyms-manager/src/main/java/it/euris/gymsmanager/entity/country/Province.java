@@ -19,8 +19,8 @@ public class Province {
     @Column(name="description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name="region_id", nullable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="region_id")
     private Region region;
 
 }

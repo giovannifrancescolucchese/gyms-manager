@@ -1,7 +1,10 @@
 package it.euris.gymsmanager.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
 import java.util.Set;
 
 @Entity
@@ -9,45 +12,51 @@ import java.util.Set;
 @Table(name = "gym")
 public class Gym {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", updatable = false, nullable = false)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
 
-  @Column(name="name")
-  private String name;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name="address")
-  private String address;
+    @Column(name = "address")
+    private String address;
 
-  @Column(name="description")
-  private String description;
+    @Column(name = "description")
+    private String description;
 
-  @Column(name="year_of_construction")
-  private Long constructionYear;
+    @Column(name = "year_of_construction")
+    private Long constructionYear;
 
-  @Column(name="website")
-  private String website;
+    @Column(name = "website")
+    private String website;
 
-  @Column(name="email")
-  private String email;
+    @Column(name = "email")
+    private String email;
 
-  @Column(name="phone")
-  private String phone;
+    @Column(name = "phone")
+    private String phone;
 
-  @Column(name="review")
-  private String review;
+    @Column(name = "review")
+    private String review;
 
-  @Column(name="region")
-  private String region;
+    @Column(name = "region")
+    private String region;
 
-  @Column(name="province")
-  private String province;
+    @Column(name = "province")
+    private String province;
 
-  @OneToMany(mappedBy = "gym")
-  Set<Property> property;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Owner owner;
 
-  @OneToMany(mappedBy = "gym")
-  Set<Subscription> subscription;
+    /**
+     * @OneToMany(mappedBy = "gym")
+     * Set<Property> property;
+     */
+    @OneToMany(mappedBy = "gym")
+    Set<Subscription> subscription;
 
 }

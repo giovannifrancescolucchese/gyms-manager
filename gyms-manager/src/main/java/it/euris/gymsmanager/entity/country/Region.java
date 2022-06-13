@@ -2,6 +2,8 @@ package it.euris.gymsmanager.entity.country;
 
 import javax.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +23,6 @@ public class Region {
     private String description;
 
     @OneToMany(mappedBy="region")
-    private Set<Province> province;
+    private List<Province> province;
 
 }
