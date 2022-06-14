@@ -2,15 +2,14 @@ package it.euris.gymsmanager.entity;
 
 import javax.persistence.*;
 import lombok.Data;
-import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "customer")
+@Table(name = "CUSTOMER")
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
@@ -29,8 +28,12 @@ public class Customer {
     @Column(name="email")
     private String email;
 
-    @OneToMany(mappedBy = "customer")
-    Set<Subscription> subscription;
-
+    @ManyToOne
+    @JoinColumn(name = "gym_id")
+    private Gym gym;
 }
+
+
+
+
 

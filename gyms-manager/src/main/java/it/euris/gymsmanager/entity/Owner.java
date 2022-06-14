@@ -1,18 +1,17 @@
 package it.euris.gymsmanager.entity;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
 import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "owner")
+@Table(name = "OWNER")
 public class Owner {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
@@ -30,12 +29,5 @@ public class Owner {
 
     @Column(name="email")
     private String email;
-
-    @OneToOne(mappedBy = "owner")
-    @JsonIgnore
-    private Gym gym;
-
-    /**@OneToMany(mappedBy = "owner")
-    Set<Property> property;*/
 
 }

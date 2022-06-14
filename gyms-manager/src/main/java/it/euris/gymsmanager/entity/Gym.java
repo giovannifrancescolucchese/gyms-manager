@@ -1,19 +1,15 @@
 package it.euris.gymsmanager.entity;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
-import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "gym")
+@Table(name = "GYM")
 public class Gym {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
@@ -47,16 +43,7 @@ public class Gym {
     @Column(name = "province")
     private String province;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
-    @JsonIgnore
-    private Owner owner;
-
-    /**
-     * @OneToMany(mappedBy = "gym")
-     * Set<Property> property;
-     */
-    @OneToMany(mappedBy = "gym")
-    Set<Subscription> subscription;
+    @Column(name = "owner_id")
+    private Long owner_id;
 
 }

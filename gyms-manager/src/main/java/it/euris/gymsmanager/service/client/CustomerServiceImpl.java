@@ -11,36 +11,36 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    CustomerRepository clientRepository;
+    CustomerRepository customerRepository;
 
     @Override
-    public Customer create(Customer client) {
-        return clientRepository.save(client);
+    public Customer create(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override
-    public Customer updateById(Long id, Customer client) {
-        client.setId(id);
-        return clientRepository.save(client);
+    public Customer updateById(Long id, Customer customer) {
+        customer.setId(id);
+        return customerRepository.save(customer);
     }
 
     @Override
     public Optional<Customer> getById(Long id) {
-        return clientRepository.findById(id);
+        return customerRepository.findById(id);
     }
 
     @Override
     public List<Customer> getAll() {
-        return clientRepository.findAll();
+        return customerRepository.findAll();
     }
 
     @Override
     public void deleteById(Long id) {
-        clientRepository.deleteById(id);
+        customerRepository.deleteById(id);
     }
 
     public void deleteAllInBatch(){
-        clientRepository.deleteAllInBatch();
+        customerRepository.deleteAllInBatch();
     }
 
 }

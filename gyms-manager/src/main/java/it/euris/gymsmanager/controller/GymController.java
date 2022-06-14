@@ -1,8 +1,11 @@
 package it.euris.gymsmanager.controller;
 
 import it.euris.gymsmanager.entity.Gym;
+import it.euris.gymsmanager.entity.Owner;
 import it.euris.gymsmanager.service.gym.GymServiceImpl;
 import java.util.List;
+
+import it.euris.gymsmanager.service.owner.OwnerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +24,7 @@ public class GymController {
 
     @Autowired
     GymServiceImpl gymService;
-
+    OwnerServiceImpl ownerService;
     @PostMapping(value = "createGym",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -45,6 +48,14 @@ public class GymController {
               gymService.getById(id).get():
               null
       );
+    }
+    @GetMapping(value = "getCurrentOwner/{id}")
+    public ResponseEntity<Owner> getById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                ownerService.getById(gymService.getById(id).get().getOwner_id()).isPresent()?
+                        ownerService.getById(gymService.getById(id).get().getOwner_id()).get():
+                        null
+        );
     }
 
     @GetMapping(value = "getAllGyms")

@@ -1,9 +1,12 @@
 package it.euris.gymsmanager.service.gym;
 
 import it.euris.gymsmanager.entity.Gym;
+import it.euris.gymsmanager.entity.Owner;
 import it.euris.gymsmanager.repository.GymRepository;
 import java.util.List;
 import java.util.Optional;
+
+import it.euris.gymsmanager.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,7 @@ public class GymServiceImpl implements GymService {
 
   @Autowired
   GymRepository gymRepository;
+  OwnerRepository ownerRepository;
 
   @Override
   public Gym create(Gym gym) {
@@ -32,6 +36,11 @@ public class GymServiceImpl implements GymService {
   @Override
   public List<Gym> getAll() {
     return gymRepository.findAll();
+  }
+
+  @Override
+  public Owner getCurrentOwner(Long id) {
+    return ownerRepository.getById(this.getById(id).get().getOwner_id());
   }
 
   @Override
