@@ -1,9 +1,11 @@
-package it.euris.gymsmanager.service.client;
+package it.euris.gymsmanager.service.customer;
 
 import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.repository.CustomerRepository;
 import java.util.List;
 import java.util.Optional;
+
+import it.euris.gymsmanager.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

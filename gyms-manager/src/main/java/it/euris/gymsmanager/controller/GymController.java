@@ -1,8 +1,13 @@
 package it.euris.gymsmanager.controller;
 
+import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.Owner;
+import it.euris.gymsmanager.repository.CustomerRepository;
+import it.euris.gymsmanager.service.customer.CustomerServiceImpl;
 import it.euris.gymsmanager.service.gym.GymServiceImpl;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import it.euris.gymsmanager.service.owner.OwnerServiceImpl;
@@ -24,7 +29,11 @@ public class GymController {
 
     @Autowired
     GymServiceImpl gymService;
+    @Autowired
     OwnerServiceImpl ownerService;
+    @Autowired
+
+    CustomerServiceImpl customerService;
     @PostMapping(value = "createGym",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -57,6 +66,30 @@ public class GymController {
                         null
         );
     }
+
+    @GetMapping(value = "getAllCustomerOfGym/{id}")
+    public ResponseEntity<List<Customer>> getAllCustomerOfGym(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                gymService.getById(id).isPresent()?
+                        getAllCustomer(id, customerService.getAll()):
+                        null
+        );
+    }
+
+    private List<Customer> getAllCustomer(Long id, List<Customer> customers){
+
+        List<Customer> customerOfGym = new ArrayList<>();
+
+        for(int i = 0; i < customers.size(); i++){
+            if(customers.get(i).getGym().getId() == id){
+                customerOfGym.add(customers.get(i));
+            }
+        }
+
+        return customerOfGym;
+    }
+
+
 
     @GetMapping(value = "getAllGyms")
     public ResponseEntity<List<Gym>> getAllGyms() {

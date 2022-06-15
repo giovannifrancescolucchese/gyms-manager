@@ -2,7 +2,10 @@ package it.euris.gymsmanager.service.owner;
 
 import java.util.List;
 import java.util.Optional;
+
+import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.Owner;
+import it.euris.gymsmanager.repository.CustomerRepository;
 import it.euris.gymsmanager.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Autowired
     OwnerRepository managerRepository;
+    CustomerRepository customerRepository;
 
     @Override
     public Owner create(Owner mng) {
@@ -22,6 +26,11 @@ public class OwnerServiceImpl implements OwnerService {
     public Owner updateById(Long id, Owner mng) {
         mng.setId(id);
         return managerRepository.save(mng);
+    }
+
+    @Override
+    public List<Customer> getAllCustomerFromOwner() {
+        return customerRepository.findAll();
     }
 
     @Override

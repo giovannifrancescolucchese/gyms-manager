@@ -1,7 +1,9 @@
 package it.euris.gymsmanager.service.gym;
 
+import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.Owner;
+import it.euris.gymsmanager.repository.CustomerRepository;
 import it.euris.gymsmanager.repository.GymRepository;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ public class GymServiceImpl implements GymService {
   @Autowired
   GymRepository gymRepository;
   OwnerRepository ownerRepository;
+  CustomerRepository customerRepository;
 
   @Override
   public Gym create(Gym gym) {
@@ -32,7 +35,10 @@ public class GymServiceImpl implements GymService {
   public Optional<Gym> getById(Long id) {
     return gymRepository.findById(id);
   }
-
+  @Override
+  public List<Customer> getAllCustomerOfGym() {
+    return customerRepository.findAll();
+  }
   @Override
   public List<Gym> getAll() {
     return gymRepository.findAll();

@@ -1,7 +1,13 @@
 package it.euris.gymsmanager.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import it.euris.gymsmanager.entity.Customer;
+import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.Owner;
+import it.euris.gymsmanager.service.customer.CustomerServiceImpl;
+import it.euris.gymsmanager.service.gym.GymServiceImpl;
 import it.euris.gymsmanager.service.owner.OwnerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +27,10 @@ public class OwnerController {
 
     @Autowired
     OwnerServiceImpl ownerService;
+    @Autowired
+    GymServiceImpl gymService;
+    @Autowired
+    CustomerServiceImpl customerService;
 
     @PostMapping(value = "createOwner",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -46,6 +56,35 @@ public class OwnerController {
                         null
         );
     }
+
+    @GetMapping(value = "getAllCustomerFromOwner/{id}")
+    public ResponseEntity<List<Customer>> getAllCustomerFromOwner(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                ownerService.getById(id).isPresent()?
+                        getAllCustomer(id, gymService.getAll()):
+                        null
+        );
+    }
+
+    private List<Customer> getAllCustomer(Long id, List<Gym> gyms){
+
+        List<Customer> customers = customerService.getAll();
+        List<Customer> customerOfGym = new ArrayList<>();
+
+        int i = 0;
+        while(gyms.get(i).getOwner_id() != id){
+            i++;
+        }
+
+        for(int y = 0; y < customers.size(); y++){
+            if(customers.get(y).getGym().getId() == gyms.get(i).getId()){
+                customerOfGym.add(customers.get(y));
+            }
+        }
+
+        return customerOfGym;
+    }
+
 
     @GetMapping(value = "getAllOwners")
     public ResponseEntity<List<Owner>> getAllManager() {

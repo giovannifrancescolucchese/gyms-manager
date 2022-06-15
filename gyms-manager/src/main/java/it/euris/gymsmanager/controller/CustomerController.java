@@ -1,7 +1,7 @@
 package it.euris.gymsmanager.controller;
 
 import it.euris.gymsmanager.entity.Customer;
-import it.euris.gymsmanager.service.client.CustomerServiceImpl;
+import it.euris.gymsmanager.service.customer.CustomerServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

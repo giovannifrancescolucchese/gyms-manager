@@ -1,8 +1,8 @@
 package it.euris.gymsmanager.service.gym;
 
+import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.Owner;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +13,7 @@ public interface GymService {
   Gym create(Gym gym);
   Gym updateById(Long id, Gym gym);
   Owner getCurrentOwner(Long id);
+  List<Customer> getAllCustomerOfGym();
   void deleteById(Long id);
   void deleteAllInBatch();
 

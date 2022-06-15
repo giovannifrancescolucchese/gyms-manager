@@ -1,4 +1,4 @@
-package it.euris.gymsmanager.service.client;
+package it.euris.gymsmanager.service.customer;
 
 import it.euris.gymsmanager.entity.Customer;
 import java.util.List;
