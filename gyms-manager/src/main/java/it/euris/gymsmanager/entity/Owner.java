@@ -30,4 +30,10 @@ public class Owner {
     @Column(name="email")
     private String email;
 
+    @Column(name = "region")
+    private String region;
+
+    @Column(name = "province")
+    private String province;
+
 }

@@ -14,6 +14,7 @@ public interface GymService {
   Gym updateById(Long id, Gym gym);
   Owner getCurrentOwner(Long id);
   List<Customer> getAllCustomerOfGym();
+  List<Owner> getAllOwnersOfGymByRegion();
   void deleteById(Long id);
   void deleteAllInBatch();
 

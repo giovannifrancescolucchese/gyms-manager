@@ -39,6 +39,11 @@ public class GymServiceImpl implements GymService {
   public List<Customer> getAllCustomerOfGym() {
     return customerRepository.findAll();
   }
+
+  @Override
+  public List<Owner> getAllOwnersOfGymByRegion() {
+    return ownerRepository.findAll();
+  }
   @Override
   public List<Gym> getAll() {
     return gymRepository.findAll();

@@ -1,6 +1,8 @@
 package it.euris.gymsmanager.service.country.region;
 
+import it.euris.gymsmanager.entity.country.Province;
 import it.euris.gymsmanager.entity.country.Region;
+import it.euris.gymsmanager.repository.country.ProvinceRepository;
 import it.euris.gymsmanager.repository.country.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ public class RegionServiceImpl implements RegionService {
 
     @Autowired
     RegionRepository regionRepository;
+    ProvinceRepository provinceRepository;
 
     @Override
     public Region create(Region region) {
@@ -32,6 +35,11 @@ public class RegionServiceImpl implements RegionService {
     @Override
     public List<Region> getAll() {
         return regionRepository.findAll();
+    }
+
+    @Override
+    public List<Province> getAllProvincesOfRegion() {
+        return provinceRepository.findAll();
     }
 
     @Override

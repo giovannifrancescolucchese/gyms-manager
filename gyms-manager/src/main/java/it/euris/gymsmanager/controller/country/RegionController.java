@@ -1,7 +1,12 @@
 package it.euris.gymsmanager.controller.country;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import it.euris.gymsmanager.entity.Customer;
+import it.euris.gymsmanager.entity.country.Province;
 import it.euris.gymsmanager.entity.country.Region;
+import it.euris.gymsmanager.service.country.province.ProvinceServiceImpl;
 import it.euris.gymsmanager.service.country.region.RegionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +20,8 @@ public class RegionController {
 
     @Autowired
     RegionServiceImpl regionService;
+    @Autowired
+    ProvinceServiceImpl provinceService;
     @PostMapping(value = "createRegion",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -38,6 +45,28 @@ public class RegionController {
                         regionService.getById(id).get():
                         null
         );
+    }
+
+    @GetMapping(value = "getAllProvincesOfRegion/{id}")
+    public ResponseEntity<List<Province>> getAllCustomerOfGym(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                regionService.getById(id).isPresent()?
+                        getAllProvincesOfRegion(id, provinceService.getAll()):
+                        null
+        );
+    }
+
+    private List<Province> getAllProvincesOfRegion(Long id, List<Province> provinces){
+
+        List<Province> provincesOfRegion = new ArrayList<>();
+
+        for(int i = 0; i < provinces.size(); i++){
+            if(provinces.get(i).getRegion().getId() == id){
+                provincesOfRegion.add(provinces.get(i));
+            }
+        }
+
+        return provincesOfRegion;
     }
 
     @GetMapping(value = "getAllRegions")

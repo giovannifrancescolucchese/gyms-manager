@@ -1,6 +1,8 @@
 package it.euris.gymsmanager.entity.country;
 
 import javax.persistence.*;
+
+import it.euris.gymsmanager.entity.Gym;
 import lombok.Data;
 
 @Entity
@@ -19,8 +21,8 @@ public class Province {
     @Column(name="description")
     private String description;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="region_id")
+    @ManyToOne
+    @JoinColumn(name = "region_id")
     private Region region;
 
 }

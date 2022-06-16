@@ -3,7 +3,6 @@ package it.euris.gymsmanager.controller;
 import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.Owner;
-import it.euris.gymsmanager.repository.CustomerRepository;
 import it.euris.gymsmanager.service.customer.CustomerServiceImpl;
 import it.euris.gymsmanager.service.gym.GymServiceImpl;
 
@@ -60,11 +59,25 @@ public class GymController {
     }
     @GetMapping(value = "getCurrentOwner/{id}")
     public ResponseEntity<Owner> getById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(
-                ownerService.getById(gymService.getById(id).get().getOwner_id()).isPresent()?
-                        ownerService.getById(gymService.getById(id).get().getOwner_id()).get():
+
+        if (gymService.getById(id).isPresent()){
+
+            if( ownerService.getById(gymService.getById(id).get().getOwner_id()).isPresent()) {
+
+                return ResponseEntity.ok(
+                        ownerService.getById(gymService.getById(id).get().getOwner_id()).get()
+                );
+
+            } else{
+                return ResponseEntity.ok(
                         null
-        );
+                );
+            }
+        }else {
+            return ResponseEntity.ok(
+                    null
+            );
+        }
     }
 
     @GetMapping(value = "getAllCustomerOfGym/{id}")
@@ -89,7 +102,27 @@ public class GymController {
         return customerOfGym;
     }
 
+    @GetMapping(value = "getAllOwnersOfGymByRegion/{id}")
+    public ResponseEntity<List<Owner>> getAllOwnersOfGymByRegion(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(
+                gymService.getById(id).isPresent()?
+                        getAllOwnersOfGymByRegion(id, ownerService.getAll()):
+                        null
+        );
+    }
 
+    private List<Owner> getAllOwnersOfGymByRegion(Long id, List<Owner> owners){
+
+        List<Owner> ownersOfGym = new ArrayList<>();
+
+        for(int i = 0; i < owners.size(); i++){
+            if(owners.get(i).getRegion().toLowerCase().contentEquals(gymService.getById(id).get().getRegion().toLowerCase())){
+                ownersOfGym.add(owners.get(i));
+            }
+        }
+
+        return ownersOfGym;
+    }
 
     @GetMapping(value = "getAllGyms")
     public ResponseEntity<List<Gym>> getAllGyms() {
