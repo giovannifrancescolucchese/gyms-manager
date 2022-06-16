@@ -37,7 +37,12 @@ public class GymController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Gym> create(@RequestBody Gym gym) {
-      return ResponseEntity.ok(gymService.create(gym));
+        if(ownerService.getById(gym.getOwner_id()).get().getRegion().toLowerCase().contentEquals(gym.getRegion().toLowerCase()) ){
+            return ResponseEntity.ok(gymService.create(gym));
+        }else {
+            return null;
+        }
+
     }
 
     @PostMapping(value = "updateGymById/{id}",
@@ -62,8 +67,7 @@ public class GymController {
 
         if (gymService.getById(id).isPresent()){
 
-            if( ownerService.getById(gymService.getById(id).get().getOwner_id()).isPresent()) {
-
+            if(ownerService.getById(gymService.getById(id).get().getOwner_id()).isPresent()) {
                 return ResponseEntity.ok(
                         ownerService.getById(gymService.getById(id).get().getOwner_id()).get()
                 );
