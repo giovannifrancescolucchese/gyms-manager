@@ -7,7 +7,6 @@ import it.euris.gymsmanager.repository.CustomerRepository;
 import it.euris.gymsmanager.repository.GymRepository;
 import java.util.List;
 import java.util.Optional;
-
 import it.euris.gymsmanager.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +34,7 @@ public class GymServiceImpl implements GymService {
   public Optional<Gym> getById(Long id) {
     return gymRepository.findById(id);
   }
+
   @Override
   public List<Customer> getAllCustomerOfGym() {
     return customerRepository.findAll();
@@ -44,6 +44,7 @@ public class GymServiceImpl implements GymService {
   public List<Owner> getAllOwnersOfGymByRegion() {
     return ownerRepository.findAll();
   }
+
   @Override
   public List<Gym> getAll() {
     return gymRepository.findAll();

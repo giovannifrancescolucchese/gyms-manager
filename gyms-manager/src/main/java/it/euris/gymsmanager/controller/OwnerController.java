@@ -2,7 +2,6 @@ package it.euris.gymsmanager.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.Owner;
@@ -36,7 +35,11 @@ public class OwnerController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Owner> create(@RequestBody Owner owner) {
-        return ResponseEntity.ok(ownerService.create(owner));
+        if(owner.getRegion() != null){
+            return ResponseEntity.ok(ownerService.create(owner));
+        }else{
+            return null;
+        }
     }
 
     @PostMapping(value = "updateOwnerById/{id}",
@@ -84,7 +87,6 @@ public class OwnerController {
 
         return customerOfGym;
     }
-
 
     @GetMapping(value = "getAllOwners")
     public ResponseEntity<List<Owner>> getAllManager() {

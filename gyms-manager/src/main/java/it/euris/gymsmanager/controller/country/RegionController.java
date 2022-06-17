@@ -2,8 +2,6 @@ package it.euris.gymsmanager.controller.country;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.country.Province;
 import it.euris.gymsmanager.entity.country.Region;
 import it.euris.gymsmanager.service.country.province.ProvinceServiceImpl;
@@ -22,6 +20,7 @@ public class RegionController {
     RegionServiceImpl regionService;
     @Autowired
     ProvinceServiceImpl provinceService;
+
     @PostMapping(value = "createRegion",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -85,6 +84,5 @@ public class RegionController {
         regionService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
-
 
 }

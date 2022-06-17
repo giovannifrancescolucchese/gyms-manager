@@ -1,6 +1,5 @@
 package it.euris.gymsmanager.service.country.province;
 
-
 import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.country.Province;
 import it.euris.gymsmanager.repository.GymRepository;
@@ -51,6 +50,5 @@ public class ProvinceServiceImpl implements ProvinceService {
     public void deleteAllInBatch(){
         provinceRepository.deleteAllInBatch();
     }
-
 
 }

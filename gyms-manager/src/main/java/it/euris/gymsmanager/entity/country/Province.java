@@ -1,10 +1,9 @@
 package it.euris.gymsmanager.entity.country;
 
 import javax.persistence.*;
-
-import it.euris.gymsmanager.entity.Gym;
 import lombok.Data;
 
+/**Object Province*/
 @Entity
 @Data
 @Table(name = "PROVINCE")

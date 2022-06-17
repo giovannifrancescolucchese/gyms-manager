@@ -3,9 +3,7 @@ package it.euris.gymsmanager.entity.country;
 import javax.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-import java.util.Set;
-
+/**Object Region*/
 @Entity
 @Data
 @Table(name = "REGION")

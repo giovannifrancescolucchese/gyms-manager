@@ -20,6 +20,7 @@ public class ProvinceController {
     ProvinceServiceImpl provinceService;
     @Autowired
     GymServiceImpl gymService;
+
     @PostMapping(value = "createProvince",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -59,8 +60,7 @@ public class ProvinceController {
         List<Gym> gymsOfProvince = new ArrayList<>();
 
         for(int i = 0; i < gyms.size(); i++){
-            if(gyms.get(i).getProvince().toUpperCase().contentEquals(provinceService.getById(id).get().getValue())){
-
+            if(gyms.get(i).getProvince().toUpperCase().contentEquals(provinceService.getById(id).get().getValue() )){
                 gymsOfProvince.add(gyms.get(i));
             }
         }
@@ -84,7 +84,6 @@ public class ProvinceController {
         provinceService.deleteAllInBatch();
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
-
 
 }
 

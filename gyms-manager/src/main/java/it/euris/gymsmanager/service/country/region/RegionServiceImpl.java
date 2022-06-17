@@ -51,6 +51,4 @@ public class RegionServiceImpl implements RegionService {
         regionRepository.deleteAllInBatch();
     }
 
-
-
 }

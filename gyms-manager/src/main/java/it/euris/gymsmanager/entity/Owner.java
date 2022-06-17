@@ -3,8 +3,7 @@ package it.euris.gymsmanager.entity;
 import javax.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
-
+/**Object Owner*/
 @Entity
 @Data
 @Table(name = "OWNER")

@@ -3,6 +3,7 @@ package it.euris.gymsmanager.entity;
 import javax.persistence.*;
 import lombok.Data;
 
+/**Object Gym*/
 @Entity
 @Data
 @Table(name = "GYM")

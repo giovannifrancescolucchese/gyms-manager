@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RequestMapping("/api/")
 @RestController
 public class GymController {
@@ -37,12 +38,16 @@ public class GymController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Gym> create(@RequestBody Gym gym) {
-        if(ownerService.getById(gym.getOwner_id()).get().getRegion().toLowerCase().contentEquals(gym.getRegion().toLowerCase()) ){
-            return ResponseEntity.ok(gymService.create(gym));
-        }else {
-            return null;
-        }
 
+        if(gym.getRegion() != null){
+            if(ownerService.getById(gym.getOwner_id()).get().getRegion().toLowerCase().contentEquals(gym.getRegion().toLowerCase()) ){
+                return ResponseEntity.ok(gymService.create(gym));
+            }else {
+                return null;
+            }
+        }else{
+           return null;
+        }
     }
 
     @PostMapping(value = "updateGymById/{id}",

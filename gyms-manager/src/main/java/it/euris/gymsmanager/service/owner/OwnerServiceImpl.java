@@ -2,7 +2,6 @@ package it.euris.gymsmanager.service.owner;
 
 import java.util.List;
 import java.util.Optional;
-
 import it.euris.gymsmanager.entity.Customer;
 import it.euris.gymsmanager.entity.Owner;
 import it.euris.gymsmanager.repository.CustomerRepository;
