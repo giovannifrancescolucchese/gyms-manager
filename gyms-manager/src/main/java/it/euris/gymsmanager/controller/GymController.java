@@ -5,10 +5,8 @@ import it.euris.gymsmanager.entity.Gym;
 import it.euris.gymsmanager.entity.Owner;
 import it.euris.gymsmanager.service.customer.CustomerServiceImpl;
 import it.euris.gymsmanager.service.gym.GymServiceImpl;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import it.euris.gymsmanager.service.owner.OwnerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RequestMapping("/api/")
 @RestController
 public class GymController {
@@ -32,8 +29,8 @@ public class GymController {
     @Autowired
     OwnerServiceImpl ownerService;
     @Autowired
-
     CustomerServiceImpl customerService;
+
     @PostMapping(value = "createGym",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -67,6 +64,7 @@ public class GymController {
               null
       );
     }
+
     @GetMapping(value = "getCurrentOwner/{id}")
     public ResponseEntity<Owner> getById(@PathVariable("id") Long id) {
 

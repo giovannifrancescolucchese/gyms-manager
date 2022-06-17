@@ -26,7 +26,11 @@ public class CustomerController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Customer> create(@RequestBody Customer customer) {
-        return ResponseEntity.ok(customerService.create(customer));
+        if(customer.getGym() != null){
+            return ResponseEntity.ok(customerService.create(customer));
+        }else{
+            return null;
+        }
     }
 
     @PostMapping(value = "updateCustomerById/{id}",
