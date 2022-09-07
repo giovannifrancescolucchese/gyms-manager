@@ -1,0 +1,15 @@
+2022-06-09 15:19:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MANAGER" not found; SQL statement:
+select manager0_.id as id1_2_0_, manager0_.email as email2_2_0_, manager0_.fiscal_code as fiscal_c3_2_0_, manager0_.name as name4_2_0_, manager0_.phone as phone5_2_0_, manager0_.surname as surname6_2_0_ from manager manager0_ where manager0_.id=? [42102-200]
+2022-06-09 15:19:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MANAGER" not found; SQL statement:
+select manager0_.id as id1_2_0_, manager0_.email as email2_2_0_, manager0_.fiscal_code as fiscal_c3_2_0_, manager0_.name as name4_2_0_, manager0_.phone as phone5_2_0_, manager0_.surname as surname6_2_0_ from manager manager0_ where manager0_.id=? [42102-200]
+2022-06-09 15:19:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MANAGER" not found; SQL statement:
+select manager0_.id as id1_2_0_, manager0_.email as email2_2_0_, manager0_.fiscal_code as fiscal_c3_2_0_, manager0_.name as name4_2_0_, manager0_.phone as phone5_2_0_, manager0_.surname as surname6_2_0_ from manager manager0_ where manager0_.id=? [42102-200]
+2022-06-09 15:19:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MANAGER" not found; SQL statement:
+select manager0_.id as id1_2_0_, manager0_.email as email2_2_0_, manager0_.fiscal_code as fiscal_c3_2_0_, manager0_.name as name4_2_0_, manager0_.phone as phone5_2_0_, manager0_.surname as surname6_2_0_ from manager manager0_ where manager0_.id=? [42102-200]
+2022-06-09 15:19:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MANAGER" not found; SQL statement:
+select manager0_.id as id1_2_0_, manager0_.email as email2_2_0_, manager0_.fiscal_code as fiscal_c3_2_0_, manager0_.name as name4_2_0_, manager0_.phone as phone5_2_0_, manager0_.surname as surname6_2_0_ from manager manager0_ where manager0_.id=? [42102-200]

@@ -3,6 +3,8 @@ package it.euris.gymsmanager.entity;
 import javax.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
+
 /**Object Customer*/
 @Entity
 @Data
@@ -29,9 +31,17 @@ public class Customer {
     @Column(name="email")
     private String email;
 
+    @Column(name="startdate")
+    private String startdate;
+
+    @Column(name="enddate")
+    private String enddate;
+
     @ManyToOne
     @JoinColumn(name = "gym_id")
     private Gym gym;
+
+
 }
 
 
